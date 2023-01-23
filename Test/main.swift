@@ -6,6 +6,12 @@
 //
 
 import Foundation
+import ScreenCaptureKit
 
 print("Hello, World!")
 
+let availableContent = try await SCShareableContent.excludingDesktopWindows(false, onScreenWindowsOnly: true)
+
+for (i, window) in availableContent.windows.enumerated() {
+    print(i, "window", window.title)
+}
